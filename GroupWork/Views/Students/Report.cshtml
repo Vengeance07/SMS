@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GroupWork.Models.Student>
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+@using (Html.BeginForm("Report", "Students", FormMethod.Get))
+{
+    @Html.TextBox("search")
+    <input type="submit" value="submit" />
+}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>EnrollDate</th>
+        <th>AddressId</th>
+        <th>CourseId</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Addresses.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.CourseName)
+            </td>
+        </tr>
+    }
+</table>
+
+
+
